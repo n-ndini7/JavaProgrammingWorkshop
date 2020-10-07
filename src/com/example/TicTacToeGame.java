@@ -62,7 +62,6 @@ public class TicTacToeGame {
 	public static void desiredLocation() {
 		// char turn = 'X';
 		char flag;
-		System.out.println();
 		System.out.println("Do you wish to play ? (y/n)");
 		flag = sc.next().charAt(0);
 		while (flag == 'y' || flag == 'Y') {
@@ -100,15 +99,33 @@ public class TicTacToeGame {
 	}
 
 	// uc4 and uc5 to check for empty block
+
+	public static void toss() {
+		System.out.println("Toss and play!");
+		int turn = ((int) Math.floor(Math.random() * 10) % 2) + 1;
+		int choice = 1;
+		if (turn == 1) {
+			System.out.println("Player's turn!");
+			desiredLocation();
+		} else {
+			System.out.println("Computer's turn!");
+			int l = ((int) Math.floor(Math.random() * 10) % 9) + 1;
+			board[l] = 'X';
+			System.out.println("Computer placed X at " + l + " position");
+			count++;
+			desiredLocation();
+		}
+	}
+
 	public static void main(String[] args) {
 		TicTacToeGame t = new TicTacToeGame();
 		System.out.println("Welcome to Tic Tac Toe Game!!");
 		System.out.println("----------------------------");
 		t.createBoard(); // Empty initially
 		// t.chooseLetter();
-		t.desiredLocation();
+		// t.desiredLocation();
 		// t.printBoard();
-		// uc2 called
+		t.toss();
 	}
 
 }
