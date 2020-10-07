@@ -30,18 +30,32 @@ public class TicTacToeGame {
 		case '0':
 			System.out.println("Computer: X");
 			player = letter;
+			board[1] = letter;
 			comp = 'X';
 			break;
 		}
 	}
 
 	// uc2
+	public static void printBoard() {
+		System.out.println("Your current board looks like:");
+		System.out.println(" -------------");
+		System.out.println(" | " + board[1] + " | " + board[2] + " | " + board[3] + " | ");
+		System.out.println(" -------------");
+		System.out.println(" | " + board[4] + " | " + board[5] + " | " + board[6] + " | ");
+		System.out.println(" -------------");
+		System.out.println(" | " + board[7] + " | " + board[8] + " | " + board[9] + " | ");
+		System.out.println(" -------------");
+	}
+
+	// uc3
 	public static void main(String[] args) {
 		TicTacToeGame t = new TicTacToeGame();
 		System.out.println("Welcome to Tic Tac Toe Game!!");
 		System.out.println("----------------------------");
 		t.createBoard(); // Empty initially
-		t.chooseLetter();
+		// t.chooseLetter();
+		t.printBoard();
 		// uc2 called
 	}
 
