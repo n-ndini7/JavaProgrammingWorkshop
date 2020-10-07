@@ -64,15 +64,14 @@ public class TicTacToeGame {
 		char flag;
 		System.out.println("Do you wish to play ? (y/n)");
 		flag = sc.next().charAt(0);
+		System.out.println("Enter the letter:");
+		letter = sc.next().charAt(0);
 		while (flag == 'y' || flag == 'Y') {
 			System.out.println();
 			System.out.println("Enter the desired position :");
 			int choice = Integer.parseInt(sc.next());
 			if (choice >= 1 && choice <= 9) {
 				if (board[choice] == ' ') {
-
-					System.out.println("Enter the letter:");
-					letter = sc.next().charAt(0);
 					player = letter;
 					board[choice] = player;
 					count++;
