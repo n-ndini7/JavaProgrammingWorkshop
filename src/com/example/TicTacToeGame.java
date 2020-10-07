@@ -62,9 +62,11 @@ public class TicTacToeGame {
 	public static void desiredLocation() {
 		// char turn = 'X';
 		char flag;
+		System.out.println();
 		System.out.println("Do you wish to play ? (y/n)");
 		flag = sc.next().charAt(0);
 		while (flag == 'y' || flag == 'Y') {
+			System.out.println();
 			System.out.println("Enter the desired position :");
 			int choice = Integer.parseInt(sc.next());
 			if (choice >= 1 && choice <= 9) {
@@ -97,7 +99,7 @@ public class TicTacToeGame {
 		}
 	}
 
-	// uc4
+	// uc4 and uc5 to check for empty block
 	public static void main(String[] args) {
 		TicTacToeGame t = new TicTacToeGame();
 		System.out.println("Welcome to Tic Tac Toe Game!!");
