@@ -62,6 +62,8 @@ public class TicTacToeGame {
 	public static void desiredLocation() {
 		// char turn = 'X';
 		char flag;
+		System.out.println("Enter the letter:");
+		letter = sc.next().charAt(0);
 		System.out.println("Do you wish to play ? (y/n)");
 		flag = sc.next().charAt(0);
 		while (flag == 'y' || flag == 'Y') {
@@ -70,8 +72,8 @@ public class TicTacToeGame {
 			if (choice >= 1 && choice <= 9) {
 				if (board[choice] == ' ') {
 
-					System.out.println("Enter the letter:");
-					letter = sc.next().charAt(0);
+					//System.out.println("Enter the letter:");
+					//letter = sc.next().charAt(0);
 					player = letter;
 					board[choice] = player;
 					count++;
