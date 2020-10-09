@@ -4,12 +4,13 @@ import java.util.*;
 
 public class TicTacToeGame {
 	static Scanner sc = new Scanner(System.in);
-	public static char player;
-	public static char comp;
-	public static char letter;
+	public static char player = ' ';
+	public static char comp = ' ';
+	public static char letter = ' ';
 	public static char[] board = new char[10];
-	public static int count = 0;
-	public static int turn;
+	private static int count;
+	public static int turn = 0;
+	public static int compTurn = 0;;
 
 	public static char[] createBoard() {
 		for (int i = 0; i < board.length; i++)
@@ -18,6 +19,9 @@ public class TicTacToeGame {
 	}
 
 	// UC1
+	public TicTacToeGame(int count) {
+		this.count = count;
+	}
 
 	public static void chooseLetter() {
 		System.out.print("Enter your letter:");
@@ -53,7 +57,7 @@ public class TicTacToeGame {
 	// uc3
 	public static void compPos(char c) {
 
-		int compTurn = 0;
+		compTurn = 0;
 		if (board[1] == ' ' || board[3] == ' ' || board[7] == ' ' || board[9] == ' ') {
 			while (true) {
 				compTurn = (int) Math.floor((Math.random() * 10)) % 4;
@@ -118,22 +122,22 @@ public class TicTacToeGame {
 				System.out.println("PLayer has won the game!");
 				System.out.println("Game ends!!");
 				System.out.println("Thankyou for playing!!");
-				System.exit(0);
+				break;
 			case 2:
 				System.out.println("Computer has won the game!");
 				System.out.println("Game ends!!");
 				System.out.println("Thankyou for playing!!");
-				System.exit(0);
+				break;
 			case 9:
 				System.out.println("It's a draw!!!");
 				System.out.println("Game ends!!");
 				System.out.println("Thankyou for playing!!");
-				System.exit(0);
+				break;
 
 			}
 			if (count == 9) {
 				System.out.println("It's a draw!!! \n \nThankyou for playing!!");
-				System.exit(0);
+				break;
 			}
 		}
 	}
@@ -333,7 +337,6 @@ public class TicTacToeGame {
 	public static void toss() {
 		System.out.println("Toss and play!");
 		turn = ((int) Math.floor(Math.random() * 10) % 2) + 1;
-		int choice = 1;
 		if (turn == 1) {
 			System.out.println("Player's turn!");
 			System.out.println("Enter the letter:");
@@ -355,13 +358,26 @@ public class TicTacToeGame {
 
 	// Uc12 - play game till no one wins or end the game if any wins
 
-	public static void main(String[] args) {
-		TicTacToeGame t = new TicTacToeGame();
-		System.out.println("Welcome to Tic Tac Toe Game!!");
-		System.out.println("----------------------------");
-		t.createBoard(); // Empty initially
-		t.toss();
-
+	public static void Play() {
+		int newcountfornewgame = 0;
+		TicTacToeGame t = new TicTacToeGame(newcountfornewgame);
+		createBoard();
+		toss();
 	}
 
+	public static void main(String[] args) {
+		System.out.println("Welcome to Tic Tac Toe Game!!");
+		System.out.println("----------------------------");
+		while (true) {
+			System.out.println("1.Play a game \n2.Exit");
+			int want = Integer.parseInt(sc.next());
+			if (want == 1) {
+				Play();
+			} else {
+				System.out.println("Thankyou for using the application!!");
+				break;
+			}
+		}
+		//UC13 - ask to play a new game 
+	}
 }
