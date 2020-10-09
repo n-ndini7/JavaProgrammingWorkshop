@@ -77,7 +77,7 @@ public class TicTacToeGame {
 					if (count <= 8) {
 						if (turn == 2 && count == 2) {
 						} else
-							compPos(comp);
+							ComputerPlaysToWin();
 					}
 					printBoard();
 				} else {
@@ -90,20 +90,23 @@ public class TicTacToeGame {
 			switch (win) {
 			case 1:
 				System.out.println("PLayer has won the game!");
+				System.out.println();
 				System.out.println("Thankyou for playing!!");
 				System.exit(0);
 			case 2:
 				System.out.println("Computer has won the game!");
+				System.out.println();
 				System.out.println("Thankyou for playing!!");
 				System.exit(0);
 			case 9:
 				System.out.println("It's a draw!!!");
+				System.out.println();
 				System.out.println("Thankyou for playing!!");
 				System.exit(0);
 
 			}
 			if (count == 9) {
-				System.out.println("It's a draw!!! \nThankyou for playing!!");
+				System.out.println("It's a draw!!! \n \nThankyou for playing!!");
 				System.exit(0);
 			}
 		}
@@ -152,6 +155,80 @@ public class TicTacToeGame {
 		return k;
 		// computer wins
 	}
+
+	public static void ComputerPlaysToWin() {
+		if (player == 'X')
+			comp = '0';
+		else
+			comp = 'X';
+		if (count < 2) {
+			compPos(comp);
+		} else {
+			// winning condition in row 1
+			if (board[1] == comp && board[2] == comp && board[3] == ' ')
+				board[3] = comp;
+			else if (board[1] == comp && board[2] == ' ' && board[3] == comp)
+				board[2] = comp;
+			else if (board[1] == ' ' && board[2] == comp && board[3] == comp)
+				board[1] = comp;
+			// winning condition in row 2
+			else if (board[4] == comp && board[5] == comp && board[6] == ' ')
+				board[6] = comp;
+			else if (board[5] == comp && board[6] == comp && board[4] == ' ')
+				board[4] = comp;
+			else if (board[4] == comp && board[6] == comp && board[5] == ' ')
+				board[5] = comp;
+			// winning condition in row 3
+			else if (board[7] == comp && board[8] == comp && board[9] == ' ')
+				board[9] = comp;
+			else if (board[8] == comp && board[9] == comp && board[7] == ' ')
+				board[7] = comp;
+			else if (board[7] == comp && board[9] == comp && board[8] == ' ')
+				board[8] = comp;
+
+			// winning condition in column 1
+			else if (board[1] == comp && board[4] == comp && board[7] == ' ')
+				board[7] = comp;
+			else if (board[1] == comp && board[7] == comp && board[4] == ' ')
+				board[4] = comp;
+			else if (board[4] == comp && board[7] == comp && board[1] == ' ')
+				board[1] = comp;
+			// winning condition in column 2
+			else if (board[2] == comp && board[5] == comp && board[8] == ' ')
+				board[8] = comp;
+			else if (board[2] == comp && board[8] == comp && board[5] == ' ')
+				board[5] = comp;
+			else if (board[5] == comp && board[8] == comp && board[2] == ' ')
+				board[2] = comp;
+			// winning condition in column 3
+			else if (board[3] == comp && board[6] == comp && board[9] == ' ')
+				board[9] = comp;
+			else if (board[3] == comp && board[9] == comp && board[6] == ' ')
+				board[6] = comp;
+			else if (board[6] == comp && board[9] == comp && board[3] == ' ')
+				board[3] = comp;
+
+			// winning condition in diagonal 1
+			else if (board[1] == comp && board[5] == comp && board[9] == ' ')
+				board[9] = comp;
+			else if (board[1] == comp && board[9] == comp && board[5] == ' ')
+				board[5] = comp;
+			else if (board[5] == comp && board[9] == comp && board[1] == ' ')
+				board[1] = comp;
+			// winning condition in diagonal 2
+			else if (board[3] == comp && board[5] == comp && board[7] == ' ')
+				board[7] = comp;
+			else if (board[3] == comp && board[7] == comp && board[5] == ' ')
+				board[5] = comp;
+			else if (board[5] == comp && board[7] == comp && board[3] == ' ')
+				board[3] = comp;
+			else
+				compPos(comp);
+			// for random move when no of counts are less than 2
+		}
+	}
+
+	// Computer makes a move to win
 
 	public static int Winner() {
 		int i = 0;
