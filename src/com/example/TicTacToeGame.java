@@ -71,7 +71,9 @@ public class TicTacToeGame {
 					break;
 				}
 			}
-		} else {
+		} else if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ' && board[5] == ' ')
+			board[5] = comp;
+		else {
 			while (true) {
 				compTurn = 1 + (int) Math.floor((Math.random() * 10)) % 9;
 				if (board[compTurn] == ' ') {
@@ -81,6 +83,8 @@ public class TicTacToeGame {
 			}
 		}
 	}
+	// UC10 - place at corners if no one is winning
+	// UC11 - place at middle if no corners are available
 
 	public static void desiredLocation(int t) {
 		// char turn = 'X';
