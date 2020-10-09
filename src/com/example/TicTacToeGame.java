@@ -62,12 +62,9 @@ public class TicTacToeGame {
 
 	public static void desiredLocation(int t) {
 		// char turn = 'X';
-		char flag;
-		System.out.println("Do you wish to play ? (y/n)");
-		flag = sc.next().charAt(0);
-		System.out.println("Enter the letter:");
-		letter = sc.next().charAt(0);
-		while (flag == 'y' || flag == 'Y') {
+		// char flag = 'y';
+		int win = 0;
+		while (win == 0) {
 			System.out.println();
 			System.out.println("Enter the desired position :");
 			int choice = Integer.parseInt(sc.next());
@@ -78,11 +75,9 @@ public class TicTacToeGame {
 					count++;
 					comp = (letter == 'X') ? '0' : 'X';
 					if (count <= 8) {
-						compPos(comp);
-					} else {
-						printBoard();
-						System.out.println("Game Ends!");
-						break;
+						if (turn == 2 && count == 2) {
+						} else
+							compPos(comp);
 					}
 					printBoard();
 				} else {
@@ -91,52 +86,84 @@ public class TicTacToeGame {
 			} else {
 				System.out.println("Invalid position!!");
 			}
-			// printBoard();
-			if (count < 9) {
-				System.out.println("Do you wish to continue ? (y/n)");
-				flag = sc.next().charAt(0);
-			} else {
-				flag = 'n';
+			win = Winner();
+			switch (win) {
+			case 1:
+				System.out.println("PLayer has won the game!");
+				System.out.println("Thankyou for playing!!");
+				System.exit(0);
+			case 2:
+				System.out.println("Computer has won the game!");
+				System.out.println("Thankyou for playing!!");
+				System.exit(0);
+			case 9:
+				System.out.println("It's a draw!!!");
+				System.out.println("Thankyou for playing!!");
+				System.exit(0);
+
+			}
+			if (count == 9) {
+				System.out.println("It's a draw!!! \nThankyou for playing!!");
+				System.exit(0);
 			}
 		}
-		int dec = Winner();
-		if (dec == 1 && t == 1)
-			System.out.println("Player won the game!");
-		else if (dec == 1 && t == 2)
-			System.out.println("Computer won the game!");
-		else
-			System.out.println("It's a draw!");
-		System.out.println("Thankyou for playing!");
 	}
 
 	// uc4 and uc5 to check for empty block
 
-	public static int Winner() {
-		int i = 0;
+	public static int playerWins() {
+		int j = 0;
+		if ((board[1] == player && board[2] == player && board[3] == player)
+				|| (board[4] == player && board[5] == player && board[6] == player)
+				|| (board[7] == player && board[8] == player && board[9] == player)
+				|| (board[1] == player && board[4] == player && board[7] == player)
+				|| (board[2] == player && board[5] == player && board[8] == player)
+				|| (board[3] == player && board[6] == player && board[9] == player)
+				|| (board[1] == player && board[5] == player && board[9] == player)
+				|| (board[3] == player && board[5] == player && board[7] == player))
+			j = 3;
+		return j;
+	}
+
+	// player wins
+	public static int computerWins() {
+		int k = 0;
+		if (player == 'X') {
+			if ((board[1] == '0' && board[2] == '0' && board[3] == '0')
+					|| (board[4] == '0' && board[5] == '0' && board[6] == '0')
+					|| (board[7] == '0' && board[8] == '0' && board[9] == '0')
+					|| (board[1] == '0' && board[4] == '0' && board[7] == '0')
+					|| (board[2] == '0' && board[5] == '0' && board[8] == '0')
+					|| (board[3] == '0' && board[6] == '0' && board[9] == '0')
+					|| (board[1] == '0' && board[5] == '0' && board[9] == '0')
+					|| (board[3] == '0' && board[5] == '0' && board[7] == '0'))
+				k = 4;
+		} else {
 			if ((board[1] == 'X' && board[2] == 'X' && board[3] == 'X')
 					|| (board[4] == 'X' && board[5] == 'X' && board[6] == 'X')
-					|| (board[7] == 'X' && board[8] == 'X' && board[9] == 'X'))
-				i = 1;
-			if ((board[1] == 'X' && board[4] == 'X' && board[7] == 'X')
+					|| (board[7] == 'X' && board[8] == 'X' && board[9] == 'X')
+					|| (board[1] == 'X' && board[4] == 'X' && board[7] == 'X')
 					|| (board[2] == 'X' && board[5] == 'X' && board[8] == 'X')
-					|| (board[3] == 'X' && board[6] == 'X' && board[9] == 'X'))
-				i = 1;
-			else if ((board[1] == '0' && board[4] == '0' && board[7] == '0')
-					|| (board[2] == '0' && board[5] == '0' && board[8] == '0')
-					|| (board[3] == '0' && board[6] == '0' && board[9] == '0'))
-				i = 1;
-			else if ((board[1] == '0' && board[4] == '0' && board[7] == '0')
-					|| (board[2] == '0' && board[5] == '0' && board[8] == '0')
-					|| (board[3] == '0' && board[6] == '0' && board[9] == '0'))
-				i = 1;
-			else if ((board[1] == 'X' && board[5] == 'X' && board[9] == 'X')
+					|| (board[3] == 'X' && board[6] == 'X' && board[9] == 'X')
+					|| (board[1] == 'X' && board[5] == 'X' && board[9] == 'X')
 					|| (board[3] == 'X' && board[5] == 'X' && board[7] == 'X'))
-				i = 1;
-			else if ((board[1] == '0' && board[5] == '0' && board[9] == '0')
-					|| (board[3] == '0' && board[5] == '0' && board[7] == '0'))
-				i = 1;
-			else
-				i = 2;
+				k = 4;
+		}
+		return k;
+		// computer wins
+	}
+
+	public static int Winner() {
+		int i = 0;
+		int a = playerWins();
+		int b = computerWins();
+		if (a == 3 && b != 4)
+			i = 1;
+		else if (b == 4 && a != 3)
+			i = 2;
+		else if (a == 3 && b == 4)
+			i = 9;
+
 		return i;
 	}
 
@@ -146,12 +173,17 @@ public class TicTacToeGame {
 		int choice = 1;
 		if (turn == 1) {
 			System.out.println("Player's turn!");
+			System.out.println("Enter the letter:");
+			letter = sc.next().charAt(0);
 			desiredLocation(turn);
 		} else {
 			System.out.println("Computer's turn!");
+			System.out.println("Enter the letter:");
+			letter = sc.next().charAt(0);
 			int l = ((int) Math.floor(Math.random() * 10) % 9) + 1;
-			board[l] = 'X';
-			System.out.println("Computer placed X at " + l + " position");
+			comp = (letter == 'X') ? '0' : 'X';
+			System.out.println("Computer placed " + comp + " at " + l + " position");
+			board[l] = comp;
 			count++;
 			desiredLocation(turn);
 		}
