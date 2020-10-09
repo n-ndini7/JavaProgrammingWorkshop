@@ -116,17 +116,17 @@ public class TicTacToeGame {
 			switch (win) {
 			case 1:
 				System.out.println("PLayer has won the game!");
-				System.out.println();
+				System.out.println("Game ends!!");
 				System.out.println("Thankyou for playing!!");
 				System.exit(0);
 			case 2:
 				System.out.println("Computer has won the game!");
-				System.out.println();
+				System.out.println("Game ends!!");
 				System.out.println("Thankyou for playing!!");
 				System.exit(0);
 			case 9:
 				System.out.println("It's a draw!!!");
-				System.out.println();
+				System.out.println("Game ends!!");
 				System.out.println("Thankyou for playing!!");
 				System.exit(0);
 
@@ -353,14 +353,13 @@ public class TicTacToeGame {
 
 	}
 
+	// Uc12 - play game till no one wins or end the game if any wins
+
 	public static void main(String[] args) {
 		TicTacToeGame t = new TicTacToeGame();
 		System.out.println("Welcome to Tic Tac Toe Game!!");
 		System.out.println("----------------------------");
 		t.createBoard(); // Empty initially
-		// t.chooseLetter();
-		// t.desiredLocation();
-		// t.printBoard();
 		t.toss();
 
 	}
