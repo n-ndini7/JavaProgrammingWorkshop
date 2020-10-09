@@ -60,9 +60,9 @@ public class TicTacToeGame {
 			compPos(c);
 	}
 
-	public static void desiredLocation(int t) {
-		// char turn = 'X';
-		// char flag = 'y';
+	public static void desiredLocation(int t){
+    // char turn = 'X';
+    // char flag = 'y';
 		int win = 0;
 		while (win == 0) {
 			System.out.println();
@@ -105,12 +105,11 @@ public class TicTacToeGame {
 			if (count == 9) {
 				System.out.println("It's a draw!!! \nThankyou for playing!!");
 				System.exit(0);
-			}
-		}
-	}
-
+      }
+    }
+  }
 	// uc4 and uc5 to check for empty block
-
+  
 	public static int playerWins() {
 		int j = 0;
 		if ((board[1] == player && board[2] == player && board[3] == player)
@@ -163,7 +162,7 @@ public class TicTacToeGame {
 			i = 2;
 		else if (a == 3 && b == 4)
 			i = 9;
-
+    
 		return i;
 	}
 
