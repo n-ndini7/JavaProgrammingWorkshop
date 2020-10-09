@@ -52,7 +52,6 @@ public class TicTacToeGame {
 
 	// uc3
 	public static void compPos(char c) {
-
 		int compTurn = 0;
 		if (board[1] == ' ' || board[3] == ' ' || board[7] == ' ' || board[9] == ' ') {
 			while (true) {
@@ -82,9 +81,9 @@ public class TicTacToeGame {
 		}
 	}
 
-	public static void desiredLocation(int t) {
-		// char turn = 'X';
-		// char flag = 'y';
+	public static void desiredLocation(int t){
+    // char turn = 'X';
+    // char flag = 'y';
 		int win = 0;
 		while (win == 0) {
 			System.out.println();
@@ -130,12 +129,11 @@ public class TicTacToeGame {
 			if (count == 9) {
 				System.out.println("It's a draw!!! \n \nThankyou for playing!!");
 				System.exit(0);
-			}
-		}
-	}
-
+      }
+    }
+  }
 	// uc4 and uc5 to check for empty block
-
+  
 	public static int playerWins() {
 		int j = 0;
 		if ((board[1] == player && board[2] == player && board[3] == player)
@@ -303,9 +301,9 @@ public class TicTacToeGame {
 				board[5] = comp;
 			else if (board[5] == player && board[7] == player && board[3] == ' ')
 				board[3] = comp;
-			else
+			else 
 				compPos(comp);
-			// for random move when no of counts are less than 2
+			// for random move
 			count++;
 		}
 	}
@@ -322,7 +320,7 @@ public class TicTacToeGame {
 			i = 2;
 		else if (a == 3 && b == 4)
 			i = 9;
-
+    
 		return i;
 	}
 
