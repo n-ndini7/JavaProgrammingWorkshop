@@ -52,12 +52,34 @@ public class TicTacToeGame {
 
 	// uc3
 	public static void compPos(char c) {
-		int i = ((int) Math.floor(Math.random() * 10) % 9) + 1;
-		if (board[i] == ' ') {
-			board[i] = c;
-			// count++;
-		} else
-			compPos(c);
+
+		int compTurn = 0;
+		if (board[1] == ' ' || board[3] == ' ' || board[7] == ' ' || board[9] == ' ') {
+			while (true) {
+				compTurn = (int) Math.floor((Math.random() * 10)) % 4;
+				if (compTurn == 0 && board[1] == ' ') {
+					board[1] = comp;
+					break;
+				} else if (compTurn == 1 && board[3] == ' ') {
+					board[3] = comp;
+					break;
+				} else if (compTurn == 2 && board[7] == ' ') {
+					board[7] = comp;
+					break;
+				} else if (compTurn == 3 && board[9] == ' ') {
+					board[9] = comp;
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				compTurn = 1 + (int) Math.floor((Math.random() * 10)) % 9;
+				if (board[compTurn] == ' ') {
+					board[compTurn] = comp;
+					break;
+				}
+			}
+		}
 	}
 
 	public static void desiredLocation(int t) {
