@@ -55,7 +55,7 @@ public class TicTacToeGame {
 		int i = ((int) Math.floor(Math.random() * 10) % 9) + 1;
 		if (board[i] == ' ') {
 			board[i] = c;
-			count++;
+			// count++;
 		} else
 			compPos(c);
 	}
@@ -163,6 +163,7 @@ public class TicTacToeGame {
 			comp = 'X';
 		if (count < 2) {
 			compPos(comp);
+			count++;
 		} else {
 			// winning condition in row 1
 			if (board[1] == comp && board[2] == comp && board[3] == ' ')
@@ -222,9 +223,68 @@ public class TicTacToeGame {
 				board[5] = comp;
 			else if (board[5] == comp && board[7] == comp && board[3] == ' ')
 				board[3] = comp;
+			// UC 9 - Computer plays to block player from winning
+
+			// when player is winning in row 1
+			else if (board[1] == player && board[2] == player && board[3] == ' ')
+				board[3] = comp;
+			else if (board[1] == player && board[3] == player && board[2] == ' ')
+				board[2] = comp;
+			else if (board[2] == player && board[3] == player && board[1] == ' ')
+				board[1] = comp;
+			// when player is winning in row 2
+			else if (board[4] == player && board[5] == player && board[6] == ' ')
+				board[6] = comp;
+			else if (board[5] == player && board[6] == player && board[4] == ' ')
+				board[4] = comp;
+			else if (board[4] == player && board[6] == player && board[5] == ' ')
+				board[5] = comp;
+			// when player is winning in row 3
+			else if (board[7] == player && board[8] == player && board[9] == ' ')
+				board[9] = comp;
+			else if (board[8] == player && board[9] == player && board[7] == ' ')
+				board[7] = comp;
+			else if (board[7] == player && board[9] == player && board[8] == ' ')
+				board[8] = comp;
+			// when player is winning in column 1
+			else if (board[1] == player && board[4] == player && board[7] == ' ')
+				board[7] = comp;
+			else if (board[1] == player && board[7] == player && board[4] == ' ')
+				board[4] = comp;
+			else if (board[4] == player && board[7] == player && board[1] == ' ')
+				board[1] = comp;
+			// when player is winning in column 2
+			else if (board[2] == player && board[5] == player && board[8] == ' ')
+				board[8] = comp;
+			else if (board[2] == player && board[8] == player && board[5] == ' ')
+				board[5] = comp;
+			else if (board[5] == player && board[8] == player && board[2] == ' ')
+				board[2] = comp;
+			// when player is winning in column 3
+			else if (board[3] == player && board[6] == player && board[9] == ' ')
+				board[9] = comp;
+			else if (board[3] == player && board[9] == player && board[6] == ' ')
+				board[6] = comp;
+			else if (board[6] == player && board[9] == player && board[3] == ' ')
+				board[3] = comp;
+			// when player is winning in diagonal 1
+			else if (board[1] == player && board[5] == player && board[9] == ' ')
+				board[9] = comp;
+			else if (board[1] == player && board[9] == player && board[5] == ' ')
+				board[5] = comp;
+			else if (board[5] == player && board[9] == player && board[1] == ' ')
+				board[1] = comp;
+			// when player is winning in diagonal 2
+			else if (board[3] == player && board[5] == player && board[7] == ' ')
+				board[7] = comp;
+			else if (board[3] == player && board[7] == player && board[5] == ' ')
+				board[5] = comp;
+			else if (board[5] == player && board[7] == player && board[3] == ' ')
+				board[3] = comp;
 			else
 				compPos(comp);
 			// for random move when no of counts are less than 2
+			count++;
 		}
 	}
 
