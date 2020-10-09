@@ -55,7 +55,7 @@ public class TicTacToeGame {
 		int i = ((int) Math.floor(Math.random() * 10) % 9) + 1;
 		if (board[i] == ' ') {
 			board[i] = c;
-			count++;
+			//count++;
 		} else
 			compPos(c);
 	}
@@ -163,6 +163,7 @@ public class TicTacToeGame {
 			comp = 'X';
 		if (count < 2) {
 			compPos(comp);
+			count++;
 		} else {
 			// winning condition in row 1
 			if (board[1] == comp && board[2] == comp && board[3] == ' ')
@@ -222,9 +223,11 @@ public class TicTacToeGame {
 				board[5] = comp;
 			else if (board[5] == comp && board[7] == comp && board[3] == ' ')
 				board[3] = comp;
-			else
+
+			else 
 				compPos(comp);
-			// for random move when no of counts are less than 2
+			// for random move
+			count++;
 		}
 	}
 
